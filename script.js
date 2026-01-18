@@ -26,4 +26,6 @@ function operate(operator, n1, n2) {
     }
 }
 
-console.log(operate('/', 10, 3));
+document.querySelector(".output").textContent = operate('/', 10, 3); 
+
+console.log();
