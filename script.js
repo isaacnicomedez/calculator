@@ -27,8 +27,8 @@ function operate(operator, n1, n2) {
 }
 
 
-function renderOutput() {
-    const btns = document.querySelectorAll("buttons"); 
+function eventHandler() {
+    const btns = document.querySelectorAll("button"); 
     const output = document.querySelector(".output");
     
     let expression = "";
@@ -37,11 +37,24 @@ function renderOutput() {
         btn.addEventListener("click", e => {
             const value = e.target.textContent;
             
-            expression += digit;
-            console.log(expression);
+            expression += value;
+            output.textContent = expression;
+
+            expressionHandler(expression);
         });
     });
 }
 
+function expressionHandler(expression) {
+    const strArr = expression.split(" ");
 
-renderOutput();
+    const expressionArr = strArr.map(n => {
+        const converted = +n;
+
+        return Number.isNaN(converted) ? n : converted; 
+    });
+
+    console.log(expressionArr);
+}
+
+eventHandler();
