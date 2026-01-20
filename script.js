@@ -40,7 +40,9 @@ function eventHandler() {
             expression += value;
             output.textContent = expression;
 
-            expressionHandler(expression);
+            if (value === " = ") {
+                expressionHandler(expression);
+            }
         });
     });
 }
@@ -54,7 +56,15 @@ function expressionHandler(expression) {
         return Number.isNaN(converted) ? n : converted; 
     });
 
-    console.log(expressionArr);
+    const calculated = expressionArr.map((n, i) => {
+        const prev = expressionArr[i - 1];
+        const next = expressionArr[i + 1];
+        if (n === "+") {
+            return operate(n, prev, next);
+        }
+    });
+
+    console.log(calculated);
 }
 
 eventHandler();
