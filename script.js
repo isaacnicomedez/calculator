@@ -26,6 +26,22 @@ function operate(operator, n1, n2) {
     }
 }
 
-document.querySelector(".output").textContent = operate('/', 10, 3); 
 
-console.log();
+function renderOutput() {
+    const btns = document.querySelectorAll("buttons"); 
+    const output = document.querySelector(".output");
+    
+    let expression = "";
+
+    btns.forEach(btn => {
+        btn.addEventListener("click", e => {
+            const value = e.target.textContent;
+            
+            expression += digit;
+            console.log(expression);
+        });
+    });
+}
+
+
+renderOutput();
