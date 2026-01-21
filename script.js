@@ -24,11 +24,11 @@ function operate(operator, n1, n2) {
             return add(n1, n2);
         case "+":
             return add(n1, n2);
-        case "&multiply":
+        case "&times":
             return multiply(n1, n2);
         case "&divide":
             return divide(n1, n2);
     }
 }
 
-console.log(operate("&multiply", 2, 2));
+console.log(operate("&times", 2, 2));
