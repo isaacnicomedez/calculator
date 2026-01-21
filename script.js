@@ -21,8 +21,8 @@ function divide(n1, n2) {
     return result;
 }
 
-// 10, "+", 11, "*", 13, "-", 14, "/", 2
-let expression = [10, "*", 10, "*", 10];
+// 
+let expression = [10, "+", 11, "*", 13, "-", 14, "/", 2];
 
 const operators = ["*", "/", "+", "-"];
 
@@ -35,7 +35,11 @@ while (expression.length > 1) {
     const next = expression[i+1];
 
     if (operators.includes(current)) {
-        answer = prev * next;
+        if (current === "*") answer = prev * next;
+        if (current === "/") answer = prev / next;
+        if (current === "+") answer = prev + next;
+        if (current === "-") answer = prev - next;
+
         expression.splice(i-1, 3, answer);
     } else {
         i++;
