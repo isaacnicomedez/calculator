@@ -31,4 +31,16 @@ function operate(operator, n1, n2) {
     }
 }
 
+function eventHandler() {
+    const btns = document.querySelectorAll("button");
+
+    btns.forEach(btn => {
+        btn.addEventListener("click", e => {
+            const classN = e.target.className;
+        });
+    });
+}
+
+eventHandler();
+
 console.log(operate("&times", 2, 2));
