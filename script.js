@@ -22,8 +22,8 @@ function operate(operator, n1, n2) {
     switch (operator) {
         case "+":
             return add(n1, n2);
-        case "+":
-            return add(n1, n2);
+        case "-":
+            return subtract(n1, n2);
         case "&times":
             return multiply(n1, n2);
         case "&divide":
