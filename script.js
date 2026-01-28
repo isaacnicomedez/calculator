@@ -22,28 +22,36 @@ function divide(n1, n2) {
 }
 
 // 
-let expression = [10, "+", 11, "*", 13, "-", 14, "/", 2];
+let expression = [260, "+", 20, "/", 32, "-", 40, "*", 3];
 
-const operators = ["*", "/", "+", "-"];
+const operators = [["*", "/"], ["+", "-"]];
 
 let i = 0;
 
-while (expression.length > 1) {
-    let answer = 0;
-    const current = expression[i];
-    const prev = expression[i-1];
-    const next = expression[i+1];
+operators.forEach(operator => {
+    while (true) {
+        let answer = 0;
+        const current = expression[i];
+        const prev = expression[i-1];
+        const next = expression[i+1];
 
-    if (operators.includes(current)) {
-        if (current === "*") answer = prev * next;
-        if (current === "/") answer = prev / next;
-        if (current === "+") answer = prev + next;
-        if (current === "-") answer = prev - next;
-
-        expression.splice(i-1, 3, answer);
-    } else {
-        i++;
+        if (operator.includes(current)) {
+            if (current === "*") {
+                answer = prev * next;
+            } else if (current === "/") {
+                answer = prev / next;
+            } else if (current === "+") {
+                answer = prev + next;
+            } else if (current === "-") {
+                answer = prev - next;
+            }
+            expression.splice(i-1, 3, answer);
+            i = 0;
+            if (!(operator.some(op => expression.includes(op)))) break;
+        } else {
+            i++;
+        }
     }
-}
+});
 
 console.log(expression);
