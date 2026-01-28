@@ -21,37 +21,38 @@ function divide(n1, n2) {
     return result;
 }
 
-// 
-let expression = [260, "+", 20, "/", 32, "-", 40, "*", 3];
 
-const operators = [["*", "/"], ["+", "-"]];
+function operate() {
+    let expression = [260, "+", 20, "/", 32, "-", 40, "*", 3];
+    const operators = [["*", "/"], ["+", "-"]];
 
-let i = 0;
+    let i = 0;
 
-operators.forEach(operator => {
-    while (true) {
-        let answer = 0;
-        const current = expression[i];
-        const prev = expression[i-1];
-        const next = expression[i+1];
+    operators.forEach(operator => {
+        while (true) {
+            let answer = 0;
+            const current = expression[i];
+            const prev = expression[i-1];
+            const next = expression[i+1];
 
-        if (operator.includes(current)) {
-            if (current === "*") {
-                answer = prev * next;
-            } else if (current === "/") {
-                answer = prev / next;
-            } else if (current === "+") {
-                answer = prev + next;
-            } else if (current === "-") {
-                answer = prev - next;
+            if (operator.includes(current)) {
+                if (current === "*") {
+                    answer = multiply(prev, next);
+                } else if (current === "/") {
+                    answer = divide(prev, next);
+                } else if (current === "+") {
+                    answer = add(prev, next);
+                } else if (current === "-") {
+                    answer = subtract(prev, next);
+                }
+                expression.splice(i-1, 3, answer);
+                i = 0;
+                if (!(operator.some(op => expression.includes(op)))) break;
+            } else {
+                i++;
             }
-            expression.splice(i-1, 3, answer);
-            i = 0;
-            if (!(operator.some(op => expression.includes(op)))) break;
-        } else {
-            i++;
         }
-    }
-});
+    });
 
-console.log(expression);
+    console.log(expression);
+}
