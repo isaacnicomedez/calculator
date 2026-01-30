@@ -57,21 +57,24 @@ function operate() {
     console.log(expression);
 }
 
-const expression = [];
+function handleClicks() {
+    const expression = [];
 
-const buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll("button");
 
-buttons.forEach(button => {
-    button.addEventListener("click", e => {
-        if (button.classList.contains("digits")) {
-            if (button.classList.contains("dot")) button.disabled = true;
-            expression.push(button.textContent);
-        } else if (button.classList.contains("operator")) {
-            expression.push(button.dataset.op);
-        } else if (button.classList.contains("clear")) {
-            expression.length = 0;
-        }
-        console.log(expression);
+    buttons.forEach(button => {
+        button.addEventListener("click", e => {
+            if (button.classList.contains("digits")) {
+                if (button.classList.contains("dot")) button.disabled = true;
+                expression.push(button.textContent);
+            } else if (button.classList.contains("operator")) {
+                expression.push(button.dataset.op);
+            } else if (button.classList.contains("clear")) {
+                expression.length = 0;
+            }
+            console.log(expression);
+        });
     });
-});
+}
 
+handleClicks();
