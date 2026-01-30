@@ -64,6 +64,7 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach(button => {
     button.addEventListener("click", e => {
         if (button.classList.contains("digits")) {
+            if (button.classList.contains("dot")) button.disabled = true;
             expression.push(button.textContent);
         } else if (button.classList.contains("operator")) {
             expression.push(button.dataset.op);
