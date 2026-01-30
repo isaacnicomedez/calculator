@@ -37,6 +37,10 @@ function operate() {
             } else if (current === "-") {
                 answer = subtract(prev, next);
             }
+
+            expression.splice(index - 1, 3, answer);
+
+            index = expression.findIndex(val => operator.includes(val));
         }
     }
 
