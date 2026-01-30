@@ -10,15 +10,7 @@ function multiply(n1, n2) {
 }
 
 function divide(n1, n2) {
-    let result = n2 === 0 ? "ERROR Division by Zero!" : n1 / n2;
-
-    const divisionLength = result
-        .toString()
-        .length;
-
-    if (typeof(result) === "number" && divisionLength > 9) return result.toFixed(9);
-
-    return result;
+    return n1 / n2;
 }
 
 
@@ -26,10 +18,10 @@ function operate() {
     let expression = [10, "/", 0];
     const operators = [["*", "/"], ["+", "-"]];
 
-    let i = 0;
+    const calculated = operators.forEach(operator => {
+        let i = 0;
 
-    operators.forEach(operator => {
-        while (true) {
+        while (expression.some(val => operator.includes(val))) {
             let answer = 0;
             const current = expression[i];
             const prev = expression[i-1];
@@ -39,6 +31,7 @@ function operate() {
                 if (current === "*") {
                     answer = multiply(prev, next);
                 } else if (current === "/") {
+                    if (next === 0) return "ZERO DIVISION ERROR!";
                     answer = divide(prev, next);
                 } else if (current === "+") {
                     answer = add(prev, next);
@@ -47,8 +40,8 @@ function operate() {
                 }
                 expression.splice(i-1, 3, answer);
                 i = 0;
-                if (!(operator.some(op => expression.includes(op)))) break;
             } else {
+                if (i > expression.length) i = 0;
                 i++;
             }
         }
@@ -79,4 +72,4 @@ function handleClicks() {
     });
 }
 
-operate();
+console.log(operate());
