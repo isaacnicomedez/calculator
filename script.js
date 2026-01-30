@@ -18,6 +18,19 @@ function divide(n1, n2) {
 function operate() {
     let expression = [10, "/", 1, "*", 1, "+", 8, "-", 2, "/", 2];
     const operators = [["*","/"],["+","-"]];
+
+    for (const operator of operators) {
+        let index = expression.findIndex(val => operator.includes(val));
+
+        while (index !== -1) {
+            const current = expression[index];
+            const prev = expression[index-1];
+            const next = expression[index+1];
+            let answer = 0;
+        }
+    }
+
+    return expression[0];
 }
 
 
