@@ -27,6 +27,16 @@ function operate() {
             const prev = expression[index-1];
             const next = expression[index+1];
             let answer = 0;
+
+            if (current === "*") {
+                answer = multiply(prev, next);
+            } else if (current === "/") {
+                answer = divide(prev, next);
+            } else if (current === "+") {
+                answer = add(prev, next);
+            } else if (current === "-") {
+                answer = subtract(prev, next);
+            }
         }
     }
 
