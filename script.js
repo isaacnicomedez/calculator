@@ -65,9 +65,10 @@ buttons.forEach(button => {
     button.addEventListener("click", e => {
         if (button.classList.contains("digits")) {
             expression.push(button.textContent);
-        } else if (button.classList.contains()) {
-            console.log(expression);
+        } else if (button.classList.contains("operator")) {
+            expression.push(button.dataset.op);
         }
+        console.log(expression);
     });
 });
 
