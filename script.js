@@ -23,7 +23,7 @@ function divide(n1, n2) {
 
 
 function operate() {
-    let expression = [260, "+", 20, "/", 32, "-", 40, "*", 3];
+    let expression = [10, "/", 0];
     const operators = [["*", "/"], ["+", "-"]];
 
     let i = 0;
@@ -71,10 +71,12 @@ function handleClicks() {
                 expression.push(button.dataset.op);
             } else if (button.classList.contains("clear")) {
                 expression.length = 0;
+            // } else if (button.classList.contains("equals")) {
+                
             }
             console.log(expression);
         });
     });
 }
 
-handleClicks();
+operate();
