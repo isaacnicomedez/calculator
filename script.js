@@ -31,6 +31,7 @@ function operate() {
             if (current === "*") {
                 answer = multiply(prev, next);
             } else if (current === "/") {
+                if (next === 0) return "Error Division by Zero!";
                 answer = divide(prev, next);
             } else if (current === "+") {
                 answer = add(prev, next);
