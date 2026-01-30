@@ -67,6 +67,8 @@ buttons.forEach(button => {
             expression.push(button.textContent);
         } else if (button.classList.contains("operator")) {
             expression.push(button.dataset.op);
+        } else if (button.classList.contains("clear")) {
+            expression.length = 0;
         }
         console.log(expression);
     });
